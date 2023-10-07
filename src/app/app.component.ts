@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'GamerHoard';
+
+  events: string[] = [];
+  opened: boolean = false;
+  shouldRun = true;
 }
