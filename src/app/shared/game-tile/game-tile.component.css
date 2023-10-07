@@ -1,0 +1,8 @@
+.example-card {
+    max-width: 400px;
+  }
+
+.mat-mdc-card-image {
+    max-width: 100%;
+    max-height: 100%;
+}

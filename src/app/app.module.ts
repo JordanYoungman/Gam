@@ -16,6 +16,10 @@ import { FriendsComponent } from './features/friends/friends.component';
 import { FeedComponent } from './features/feed/feed.component';
 import { ListsComponent } from './features/lists/lists.component';
 import { SettingsComponent } from './features/settings/settings.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { GameTileComponent } from './shared/game-tile/game-tile.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { SettingsComponent } from './features/settings/settings.component';
     FriendsComponent,
     FeedComponent,
     ListsComponent,
-    SettingsComponent
+    SettingsComponent,
+    GameTileComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,10 @@ import { SettingsComponent } from './features/settings/settings.component';
     MatCheckboxModule,
     NgIf,
     NgFor,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    MatGridListModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
