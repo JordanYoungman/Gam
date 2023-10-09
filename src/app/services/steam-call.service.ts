@@ -16,4 +16,8 @@ export class SteamCallService {
     // now returns an Observable of Config
     return this.http.get<SteamGamesResponseModel>(this.proxyCall + "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=3D02DA9FD4221EC574446E9139A16403&steamid=76561198129649478&format=json&include_appinfo=true&include_played_free_games=true");
   }
+
+  getUserImage() {
+    return this.http.get<any>(this.proxyCall + "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=3D02DA9FD4221EC574446E9139A16403&steamids=76561198129649478");
+  }
 }

@@ -17,3 +17,8 @@
 .main-area {
   padding: 0.5%;
 }
+
+.user-card-component {
+  margin-left: auto;
+  margin-right: 0;
+}

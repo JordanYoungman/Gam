@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class GameTileComponent {
   @Input() gameTitle = '';
   @Input() imageUrl = '';
+  @Input() gameId = 0;
 }
