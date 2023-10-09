@@ -1,3 +1,33 @@
 <!-- <mat-grid-list cols="6" rowHeight="1:1">
     <mat-grid-tile *ngFor="let game of this.steamCall?.response?.games"><app-game-tile [gameTitle]="game!.name" [imageUrl]="game!.img_icon_url"></app-game-tile></mat-grid-tile>
   </mat-grid-list> -->
+
+  <div class="card">
+    <p-dataView #dv [value]="products" layout="grid">
+        <ng-template pTemplate="header">
+            <div class="flex justify-content-end">
+                <p-dataViewLayoutOptions layout="grid"></p-dataViewLayoutOptions>
+            </div>
+        </ng-template>
+        <ng-template let-product pTemplate="gridItem">
+            <div class="col-12 sm:col-6 lg:col-12 xl:col-4 p-2">
+                <div class="p-4 border-1 surface-border surface-card border-round">
+                    <div class="flex flex-wrap align-items-center justify-content-between gap-2">
+                        <span class="flex align-items-center gap-2">
+                            <i class="pi pi-tag"></i>
+                            <span class="font-semibold">{{ product.category }}</span>
+                        </span>
+                    </div>
+                    <div class="flex flex-column align-items-center gap-3 py-5">
+                        <img class="w-9 shadow-2 border-round" [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" [alt]="product.name" />
+                        <div class="text-2xl font-bold">{{ product.name }}</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-between">
+                        <span class="text-2xl font-semibold">{{ '$' + product.price }}</span>
+                        <button pButton icon="pi pi-shopping-cart" class="p-button-rounded" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>

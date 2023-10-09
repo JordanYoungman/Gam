@@ -12,7 +12,16 @@ import { FeedComponent } from './features/feed/feed.component'
 import { ListsComponent } from './features/lists/lists.component'
 import { SettingsComponent } from './features/settings/settings.component'
 import { HttpClientModule } from '@angular/common/http'
-import { GameTileComponent } from './shared/game-tile/game-tile.component'
+import { GameTileComponent } from './shared/game-tile/game-tile.component';
+import { ToolbarComponent } from './shared/toolbar/toolbar.component'
+
+import { ToolbarModule } from 'primeng/toolbar';
+import { ButtonModule } from 'primeng/button';
+import { SidebarModule } from 'primeng/sidebar';
+import { DataViewModule } from 'primeng/dataview';
+import { PanelMenuModule } from 'primeng/panelmenu';
+
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +32,8 @@ import { GameTileComponent } from './shared/game-tile/game-tile.component'
     ListsComponent,
     SettingsComponent,
     GameTileComponent,
+    ToolbarComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +43,11 @@ import { GameTileComponent } from './shared/game-tile/game-tile.component'
     NgFor,
     FormsModule,
     HttpClientModule,
+    ToolbarModule,
+    ButtonModule,
+    SidebarModule,
+    DataViewModule,
+    PanelMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent],

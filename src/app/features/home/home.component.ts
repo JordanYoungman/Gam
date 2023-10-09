@@ -9,6 +9,10 @@ import { SteamCallService } from 'src/app/services/steam-call.service';
 })
 
 export class HomeComponent implements OnInit {
+  layout: string = 'list';
+
+  products!: any[];
+
   public steamCall: SteamGamesResponseModel | undefined;
   
   constructor(private steamCaller: SteamCallService){

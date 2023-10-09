@@ -1,0 +1,13 @@
+<p-toolbar>
+    <div>
+        <p-button (click)="sidebarToggle()"  icon="pi pi-bars" styleClass="p-button-rounded p-button-text"></p-button>
+    </div>
+    <div class="p-toolbar-group-end">
+
+    </div>
+</p-toolbar>
+
+<section class="container">
+    <app-sidebar [ngClass]="[bntStyle]"></app-sidebar>
+    <div class="main-body"><router-outlet></router-outlet></div>
+  </section>

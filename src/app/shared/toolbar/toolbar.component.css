@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+   }
+  
+   nav{
+    height:70px;
+    background-color: green;
+   }
+
+   .container{
+    display: flex;
+    height: calc(100vh - 70px);
+   }
+
+   .container .main-body{
+    width: 100%;
+    padding-top: 0.25%;
+    padding-left: 0.25%;
+    padding-right: 0.25%;
+   }
+
+   .nav-close {
+     width: 0;
+     overflow-y: auto;
+     transition: all 0.5s;
+     background-color: #1c1b22;
+   }
+   /*Im using hover event to expand sidebar for example, you can use JS to handle click event*/
+   .nav-open {
+     width: auto;
+     padding: 0.25%;
+     background-color: #1c1b22;
+   }
