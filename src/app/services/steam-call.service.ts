@@ -1,19 +1,27 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SteamGamesModel } from '../models/SteamGamesModel';
-import { SteamGamesResponseModel } from '../models/SteamGamesResponse';
+import { GameDTO } from '../models/GameDTO';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SteamCallService {
 
-  proxyCall: string = 'https://corsproxy.io/?';
+  baseURL: string = 'https://localhost:7257/';
 
   constructor(private http: HttpClient) { }
 
-  getUserOwnedGames() {
-    // now returns an Observable of Config
-    return this.http.get<SteamGamesResponseModel>(this.proxyCall + "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=3D02DA9FD4221EC574446E9139A16403&steamid=76561198129649478&format=json&include_appinfo=true&include_played_free_games=true");
+  getGames(skip: number, take: number, steamId: string, gameToFind: string | null = null) {
+
+    let params = new HttpParams()
+    .set('skip', skip)
+    .set('take', take)
+    .set('steamId', steamId)
+    if(gameToFind != null){
+      params = params.set('gameToSearch', gameToFind)
+    }
+
+    console.log(params)
+    return this.http.get<GameDTO[]>(this.baseURL + "api/Games", {params: params});
   }
 }

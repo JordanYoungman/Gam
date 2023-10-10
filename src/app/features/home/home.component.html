@@ -3,28 +3,19 @@
   </mat-grid-list> -->
 
   <div class="card">
-    <p-dataView #dv [value]="products" layout="grid">
+    <p-dataView #dv [value]="games" layout="grid">
         <ng-template pTemplate="header">
             <div class="flex justify-content-end">
                 <p-dataViewLayoutOptions layout="grid"></p-dataViewLayoutOptions>
             </div>
         </ng-template>
-        <ng-template let-product pTemplate="gridItem">
-            <div class="col-12 sm:col-6 lg:col-12 xl:col-4 p-2">
-                <div class="p-4 border-1 surface-border surface-card border-round">
-                    <div class="flex flex-wrap align-items-center justify-content-between gap-2">
-                        <span class="flex align-items-center gap-2">
-                            <i class="pi pi-tag"></i>
-                            <span class="font-semibold">{{ product.category }}</span>
-                        </span>
-                    </div>
-                    <div class="flex flex-column align-items-center gap-3 py-5">
-                        <img class="w-9 shadow-2 border-round" [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" [alt]="product.name" />
-                        <div class="text-2xl font-bold">{{ product.name }}</div>
-                    </div>
-                    <div class="flex align-items-center justify-content-between">
-                        <span class="text-2xl font-semibold">{{ '$' + product.price }}</span>
-                        <button pButton icon="pi pi-shopping-cart" class="p-button-rounded" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></button>
+        <ng-template let-game pTemplate="gridItem" style="justify-content: center;">
+            <div>
+                <div class="xl:col-1 p-1" style="width: fit-content;">
+                    <div class="border-1 surface-border surface-card border-round image-div" style="width: fit-content;">
+                        <div class="flex flex-wrap align-items-center justify-content-between gap-2 image-box">
+                            <img class="w-100 shadow-2 border-round" [src]="'//images.igdb.com/igdb/image/upload/t_cover_big/' + game.covers.value.imageId + '.jpg'" [alt]="game.name"/>
+                        </div>
                     </div>
                 </div>
             </div>

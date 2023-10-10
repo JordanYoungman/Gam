@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GameDTO } from 'src/app/models/GameDTO';
 import { SteamGamesResponseModel } from 'src/app/models/SteamGamesResponse';
 import { SteamCallService } from 'src/app/services/steam-call.service';
 
@@ -11,7 +12,7 @@ import { SteamCallService } from 'src/app/services/steam-call.service';
 export class HomeComponent implements OnInit {
   layout: string = 'list';
 
-  products!: any[];
+  public games: GameDTO[] = [];
 
   public steamCall: SteamGamesResponseModel | undefined;
   
@@ -20,9 +21,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.steamCaller.getUserOwnedGames().subscribe(x => {
-      this.steamCall = x;
-      console.log(this.steamCall.response.games)
+    this.steamCaller.getGames(0, 30, "76561198071690607").subscribe(x => {
+      this.games = x
     })
   }
+
+  // getImage(imageId: string) {
+  //   return "background-image: 'url(//images.igdb.com/igdb/image/upload/t_cover_big/' + imageId + '.jpg);'
+  // }
 }

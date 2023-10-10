@@ -1,3 +1,17 @@
 mat-grid-tile {
     background: lightblue;
   }
+
+.image-box{
+  width: fit-content;
+}
+
+.image-div {
+  transition: transform .2s;
+}
+
+.image-div:hover {
+  -ms-transform: scale(1.25); /* IE 9 */
+  -webkit-transform: scale(1.25); /* Safari 3-8 */
+  transform: scale(1.25); 
+}
