@@ -20,6 +20,7 @@ import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
 import { DataViewModule } from 'primeng/dataview';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import {InputTextModule} from 'primeng/inputtext';
 
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
@@ -47,7 +48,8 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     ButtonModule,
     SidebarModule,
     DataViewModule,
-    PanelMenuModule
+    PanelMenuModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent],

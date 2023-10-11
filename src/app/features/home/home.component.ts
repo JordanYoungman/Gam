@@ -12,18 +12,26 @@ import { SteamCallService } from 'src/app/services/steam-call.service';
 export class HomeComponent implements OnInit {
   layout: string = 'list';
 
-  public games: GameDTO[] = [];
+  public games: any[] = [];
 
   public steamCall: SteamGamesResponseModel | undefined;
+
+  public totalRecords: number = 40;
+  public loading: boolean = true;
   
   constructor(private steamCaller: SteamCallService){
 
   }
 
   ngOnInit(): void {
-    this.steamCaller.getGames(0, 30, "76561198071690607").subscribe(x => {
+    this.steamCaller.getGames(0, 30, "76561198114790824").subscribe(x => {
       this.games = x
+      this.loading = false;
     })
+  }
+
+  loadData(event: any) {
+    console.log(event)
   }
 
   // getImage(imageId: string) {

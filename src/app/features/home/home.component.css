@@ -15,3 +15,14 @@ mat-grid-tile {
   -webkit-transform: scale(1.25); /* Safari 3-8 */
   transform: scale(1.25); 
 }
+
+.dataView {
+  justify-content: center;
+}
+
+:host ::ng-deep .p-grid { 
+  padding-left: 4%;
+  padding-right: 3%;
+  align-items: left;
+  text-align: left;
+} 
