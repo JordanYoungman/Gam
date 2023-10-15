@@ -22,6 +22,6 @@ export class SteamCallService {
     }
 
     console.log(params)
-    return this.http.get<any[]>(this.baseURL + "api/Games", {params: params});
+    return this.http.get<any>(this.baseURL + "api/Games", {params: params});
   }
 }

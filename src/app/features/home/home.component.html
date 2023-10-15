@@ -9,7 +9,7 @@
                 <span class="p-input-icon-left mb-2 md:mb-0" style="margin-right: 86%; width: 10%;">
                     <div>
                         <i class="pi pi-search"></i>
-                        <input type="search" pInputText placeholder="Search by Name">
+                        <input type="search" (change)="searchFunction($event)" pInputText placeholder="Search by Name">
                     </div>
                 </span>
                 <p-dataViewLayoutOptions layout="grid"></p-dataViewLayoutOptions>
@@ -18,8 +18,14 @@
         <ng-template let-game pTemplate="gridItem">
                 <div class="xl:col-1 p-1" style="width: fit-content;">
                     <div class="border-1 surface-border surface-card border-round image-div" style="width: fit-content;">
-                        <div class="flex flex-wrap align-items-center justify-content-between gap-2 image-box">
-                            <img class="w-100 shadow-2 border-round" [src]="'https://cdn.cloudflare.steamstatic.com/steam/apps/' + game.steamAppId + '/library_600x900.jpg'" height="350px" width="225px" [alt]="game.name"/>
+                        <div class="flex flex-wrap align-items-center justify-content-between gap-2 content">
+                            <div class="border-1 border-round content-overlay"></div>
+                            <img class="w-100 shadow-2 border-round content-image" [src]="'https://cdn.cloudflare.steamstatic.com/steam/apps/' + game.appId + '/library_600x900.jpg'" (error)="changeSource($event, game.headerImage)" height="350px" width="225px" [alt]="game.name"/>
+                            <div class="content-details fadeIn-top">
+                                <h3>{{game.name}}</h3>
+                                <br>
+                                <p-button icon="pi pi-plus" styleClass="p-button-rounded"></p-button>
+                              </div>
                         </div>
                     </div>
                 </div>

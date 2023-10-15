@@ -25,13 +25,34 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.steamCaller.getGames(0, 30, "76561198114790824").subscribe(x => {
-      this.games = x
+      this.games = x.results
+      this.totalRecords = x.totalResults
       this.loading = false;
     })
   }
 
   loadData(event: any) {
-    console.log(event)
+    this.loading = true;
+    this.steamCaller.getGames(event.first, event.rows, "76561198114790824").subscribe(x => {
+      this.games = x.results
+      this.totalRecords = x.totalResults
+      this.loading = false;
+    })
+  }
+
+  changeSource(event: any, name: any){
+    event.target.src = name;
+    event.target.classList.add("cover-img");
+  }
+
+  searchFunction(event: any){
+    var gameToFind = event.srcElement.value
+    this.loading = true;
+    this.steamCaller.getGames(0, 30, "76561198114790824", gameToFind).subscribe(x => {
+      this.games = x.results
+      this.totalRecords = x.totalResults
+      this.loading = false;
+    })
   }
 
   // getImage(imageId: string) {

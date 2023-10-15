@@ -13,7 +13,7 @@ import { ListsComponent } from './features/lists/lists.component'
 import { SettingsComponent } from './features/settings/settings.component'
 import { HttpClientModule } from '@angular/common/http'
 import { GameTileComponent } from './shared/game-tile/game-tile.component';
-import { ToolbarComponent } from './shared/toolbar/toolbar.component'
+import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
