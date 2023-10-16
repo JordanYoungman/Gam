@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core'
+import { NgModule, APP_INITIALIZER } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 
 import { AppRoutingModule } from './app-routing.module'
@@ -12,17 +12,20 @@ import { FeedComponent } from './features/feed/feed.component'
 import { ListsComponent } from './features/lists/lists.component'
 import { SettingsComponent } from './features/settings/settings.component'
 import { HttpClientModule } from '@angular/common/http'
-import { GameTileComponent } from './shared/game-tile/game-tile.component';
+import { GameTileComponent } from './shared/game-tile/game-tile.component'
 import { ToolbarComponent } from './shared/toolbar/toolbar.component'
 
-import { ToolbarModule } from 'primeng/toolbar';
-import { ButtonModule } from 'primeng/button';
-import { SidebarModule } from 'primeng/sidebar';
-import { DataViewModule } from 'primeng/dataview';
-import { PanelMenuModule } from 'primeng/panelmenu';
-import {InputTextModule} from 'primeng/inputtext';
+import { ToolbarModule } from 'primeng/toolbar'
+import { ButtonModule } from 'primeng/button'
+import { SidebarModule } from 'primeng/sidebar'
+import { DataViewModule } from 'primeng/dataview'
+import { PanelMenuModule } from 'primeng/panelmenu'
+import { InputTextModule } from 'primeng/inputtext'
 
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component'
+import { AuthRoutingModule } from './auth-routing.module'
+import { AuthModule } from '@auth0/auth0-angular'
+import { LocalAuthService } from './auth.service'
 
 @NgModule({
   declarations: [
@@ -49,9 +52,26 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     SidebarModule,
     DataViewModule,
     PanelMenuModule,
-    InputTextModule
+    InputTextModule,
+    AuthRoutingModule,
+    AuthModule.forRoot({
+      domain: 'dev-saz03qls21fxsnew.eu.auth0.com',
+      clientId: '8kVz0arjJwHOMWD4rjFr8xdzTYXE4wnq',
+      authorizationParams: {
+        redirect_uri: window.location.origin,
+      },
+    }),
   ],
-  providers: [],
+  providers: [
+    LocalAuthService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (localAuthService: LocalAuthService) => () =>
+        localAuthService.onLoad(),
+      deps: [LocalAuthService],
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
