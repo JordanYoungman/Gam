@@ -19,6 +19,7 @@ import { ToolbarModule } from 'primeng/toolbar'
 import { ButtonModule } from 'primeng/button'
 import { SidebarModule } from 'primeng/sidebar'
 import { DataViewModule } from 'primeng/dataview'
+import { ScrollPanelModule } from 'primeng/scrollpanel'
 import { PanelMenuModule } from 'primeng/panelmenu'
 import { InputTextModule } from 'primeng/inputtext'
 
@@ -26,6 +27,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component'
 import { AuthRoutingModule } from './auth-routing.module'
 import { AuthModule } from '@auth0/auth0-angular'
 import { LocalAuthService } from './auth.service'
+import { InfoPaneComponent } from './info-pane/info-pane.component'
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { LocalAuthService } from './auth.service'
     GameTileComponent,
     ToolbarComponent,
     SidebarComponent,
+    InfoPaneComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { LocalAuthService } from './auth.service'
     ButtonModule,
     SidebarModule,
     DataViewModule,
+    ScrollPanelModule,
     PanelMenuModule,
     InputTextModule,
     AuthRoutingModule,
@@ -74,4 +78,4 @@ import { LocalAuthService } from './auth.service'
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

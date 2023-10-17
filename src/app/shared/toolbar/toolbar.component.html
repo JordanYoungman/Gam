@@ -1,13 +1,24 @@
 <p-toolbar>
-    <div>
-        <p-button (click)="sidebarToggle()"  icon="pi pi-bars" styleClass="p-button-rounded p-button-text"></p-button>
-    </div>
-    <div class="p-toolbar-group-end">
-
-    </div>
+  <div>
+    <p-button
+      (click)="sidebarToggle()"
+      icon="pi pi-bars"
+      styleClass="p-button-rounded p-button-text"
+    ></p-button>
+  </div>
+  <div class="p-toolbar-group-end"></div>
 </p-toolbar>
 
 <section class="container">
-    <app-sidebar [ngClass]="[bntStyle]"></app-sidebar>
-    <div class="main-body"><router-outlet></router-outlet></div>
-  </section>
+  <app-sidebar [ngClass]="[bntStyle]"></app-sidebar>
+  <div class="main-body"><router-outlet></router-outlet></div>
+  <div class="info-pane-div">
+    <p-button
+      (click)="infoPaneToggle()"
+      icon="pi pi-list"
+      styleClass="p-button-rounded p-button-text"
+    ></p-button>
+  </div>
+
+  <app-info-pane [ngClass]="[infoBtnStyle]"></app-info-pane>
+</section>
