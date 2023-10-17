@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core'
+import { NgModule, APP_INITIALIZER } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 
 import { AppRoutingModule } from './app-routing.module'
@@ -12,20 +12,24 @@ import { FeedComponent } from './features/feed/feed.component'
 import { ListsComponent } from './features/lists/lists.component'
 import { SettingsComponent } from './features/settings/settings.component'
 import { HttpClientModule } from '@angular/common/http'
-import { GameTileComponent } from './shared/game-tile/game-tile.component';
-import { ToolbarComponent } from './shared/toolbar/toolbar.component';
+import { GameTileComponent } from './shared/game-tile/game-tile.component'
+import { ToolbarComponent } from './shared/toolbar/toolbar.component'
 
-import { ToolbarModule } from 'primeng/toolbar';
-import { ButtonModule } from 'primeng/button';
-import { SidebarModule } from 'primeng/sidebar';
-import { DataViewModule } from 'primeng/dataview';
-import { PanelMenuModule } from 'primeng/panelmenu';
-import {InputTextModule} from 'primeng/inputtext';
-import { SelectButtonModule } from 'primeng/selectbutton';
+import { ToolbarModule } from 'primeng/toolbar'
+import { ButtonModule } from 'primeng/button'
+import { SelectButtonModule } from 'primeng/selectbutton'
+import { SidebarModule } from 'primeng/sidebar'
+import { DataViewModule } from 'primeng/dataview'
+import { TableModule } from 'primeng/table'
+import { ScrollPanelModule } from 'primeng/scrollpanel'
+import { PanelMenuModule } from 'primeng/panelmenu'
+import { InputTextModule } from 'primeng/inputtext'
 
-import { TableModule } from 'primeng/table';
-
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component'
+import { AuthRoutingModule } from './auth-routing.module'
+import { AuthModule } from '@auth0/auth0-angular'
+import { LocalAuthService } from './auth.service'
+import { InfoPaneComponent } from './info-pane/info-pane.component'
 
 @NgModule({
   declarations: [
@@ -38,6 +42,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     GameTileComponent,
     ToolbarComponent,
     SidebarComponent,
+    InfoPaneComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,14 +54,32 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     HttpClientModule,
     ToolbarModule,
     ButtonModule,
+    SelectButtonModule,
     SidebarModule,
     DataViewModule,
+    TableModule,
+    ScrollPanelModule,
     PanelMenuModule,
     InputTextModule,
-    SelectButtonModule,
-    TableModule
+    AuthRoutingModule,
+    AuthModule.forRoot({
+      domain: 'dev-saz03qls21fxsnew.eu.auth0.com',
+      clientId: '8kVz0arjJwHOMWD4rjFr8xdzTYXE4wnq',
+      authorizationParams: {
+        redirect_uri: window.location.origin,
+      },
+    }),
   ],
-  providers: [],
+  providers: [
+    LocalAuthService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (localAuthService: LocalAuthService) => () =>
+        localAuthService.onLoad(),
+      deps: [LocalAuthService],
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
