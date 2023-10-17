@@ -12,30 +12,26 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
       this.items = [
           {
-              label: 'File',
-              icon: 'pi pi-fw pi-file',
+            label: 'Home',
+            icon: 'pi pi-fw pi-home',
+            routerLink: '/'
+          },
+          {
+              label: 'Lists',
+              icon: 'pi pi-fw pi-list',
               items: [
                   {
-                      label: 'New',
-                      icon: 'pi pi-fw pi-plus',
-                      items: [
-                          {
-                              label: 'Bookmark',
-                              icon: 'pi pi-fw pi-bookmark'
-                          },
-                          {
-                              label: 'Video',
-                              icon: 'pi pi-fw pi-video'
-                          }
-                      ]
+                      label: 'My Lists',
+                      icon: 'pi pi-fw pi-user-edit',
+                      routerLink: '/lists'
                   },
                   {
-                      label: 'Delete',
-                      icon: 'pi pi-fw pi-trash'
+                      label: 'My Favourites',
+                      icon: 'pi pi-fw pi-heart-fill'
                   },
                   {
-                      label: 'Export',
-                      icon: 'pi pi-fw pi-external-link'
+                      label: 'My Wishlist',
+                      icon: 'pi pi-fw pi-bookmark-fill'
                   }
               ]
           },

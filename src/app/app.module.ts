@@ -21,6 +21,9 @@ import { SidebarModule } from 'primeng/sidebar';
 import { DataViewModule } from 'primeng/dataview';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import {InputTextModule} from 'primeng/inputtext';
+import { SelectButtonModule } from 'primeng/selectbutton';
+
+import { TableModule } from 'primeng/table';
 
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
@@ -49,7 +52,9 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     SidebarModule,
     DataViewModule,
     PanelMenuModule,
-    InputTextModule
+    InputTextModule,
+    SelectButtonModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent],

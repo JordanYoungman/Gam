@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   public steamCall: SteamGamesResponseModel | undefined;
 
-  public totalRecords: number = 40;
+  public totalRecords: number = 0;
   public loading: boolean = true;
   
   constructor(private steamCaller: SteamCallService){

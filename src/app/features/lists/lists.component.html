@@ -1,1 +1,24 @@
-<p>lists works!</p>
+
+<div class="card flex justify-content-center splitButton">
+    <p-selectButton [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value"></p-selectButton>
+</div>
+
+<p-table [value]="lists" styleClass="p-datatable-striped" [tableStyle]="{'min-width': '60rem', 'padding-left': '1%', 'padding-right': '1%'}">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Public</th>
+            <th>Date Added</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-list>
+        <tr>
+            <td><img class="w-100 shadow-2 border-round content-image" [src]="list.imageUrl" [alt]="list.name" width="100"/></td>
+            <td>{{list.name}}</td>
+            <td>{{list.isPublic}}</td>
+            <td>{{list.dateAdded }}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
